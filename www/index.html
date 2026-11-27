@@ -3,21 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nilai Siswa</title>
+<title>EVALO</title>
 <style>
-:root{--ink:#12355B;--ink2:#1F4E80;--sky:#8FD3F4;--mist:#EAF4FB;--paper:#F5F8FB;--card:#fff;--text:#14212F;--mute:#5F7285;--line:#D9E4EE;--ok:#1F9D6B;--bad:#D64550;--amber:#F2A93B;box-sizing:border-box}
+:root{--deep:#0E2A49;--ink:#12355B;--ink2:#1F4E80;--sky:#8FD3F4;--mist:#EAF4FB;--paper:#F4F7FB;--card:#fff;--text:#14212F;--mute:#5F7285;--line:#D9E4EE;--ok:#1F9D6B;--bad:#D64550;--amber:#F2A93B}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;background:var(--paper);color:var(--text);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 #app{display:flex;flex-direction:column;height:100%}
-header{background:var(--ink);color:#fff;padding:calc(env(safe-area-inset-top,0px) + 14px) 18px 16px;border-radius:0 0 22px 22px}
-header h1{margin:0;font-size:20px;letter-spacing:.2px}
-header p{margin:2px 0 0;color:var(--sky);font-size:13px}
+header{background:var(--ink);color:#fff;padding:calc(env(safe-area-inset-top,0px) + 12px) 16px 14px;border-radius:0 0 22px 22px;display:flex;align-items:center;gap:12px}
+header svg{width:36px;height:36px;flex:none}
+header b{font-size:19px;font-weight:800;letter-spacing:2px;display:block;line-height:1.1}
+header span{color:var(--sky);font-size:12.5px}
 main{flex:1;overflow:auto;padding:16px 16px 24px}
-nav{display:flex;background:var(--card);border-top:1px solid var(--line);padding:6px 4px calc(env(safe-area-inset-bottom,0px) + 6px)}
-nav button{flex:1;border:0;background:none;color:var(--mute);font:600 11px system-ui;padding:6px 0;display:flex;flex-direction:column;align-items:center;gap:3px;border-radius:12px}
+nav{display:flex;background:var(--card);border-top:1px solid var(--line);padding:6px 2px calc(env(safe-area-inset-bottom,0px) + 6px)}
+nav button{flex:1;border:0;background:none;color:var(--mute);font:600 10px system-ui;padding:6px 0;display:flex;flex-direction:column;align-items:center;gap:3px;border-radius:12px}
 nav button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 nav button.on{color:var(--ink);background:var(--mist)}
 h2{margin:4px 0 12px;font-size:18px}
+.hero{position:relative;overflow:hidden;color:#fff;margin:-16px -16px 18px;padding:calc(env(safe-area-inset-top,0px) + 30px) 22px 24px;border-radius:0 0 30px 30px;background:radial-gradient(circle at 88% 8%,rgba(143,211,244,.38),transparent 42%),radial-gradient(circle at 5% 100%,rgba(242,169,59,.22),transparent 38%),linear-gradient(165deg,var(--deep),var(--ink2))}
+.hero svg.lg{width:58px;height:58px;box-shadow:0 8px 22px rgba(0,0,0,.3);border-radius:16px}
+.hero h1{margin:14px 0 4px;font-size:40px;font-weight:900;letter-spacing:5px;line-height:1}
+.hero p{margin:0;color:var(--sky);font-size:15px;max-width:260px}
+.hero .bars{position:absolute;right:18px;top:calc(env(safe-area-inset-top,0px) + 34px);display:flex;align-items:flex-end;gap:6px;height:70px;opacity:.9}
+.hero .bars i{width:10px;border-radius:4px;background:linear-gradient(var(--sky),rgba(143,211,244,.25))}
+.hstat{display:flex;gap:8px;margin-top:20px}
+.hstat div{flex:1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:10px 6px;text-align:center}
+.hstat b{display:block;font-size:22px}
+.hstat span{font-size:12px;color:var(--sky)}
+.credit{text-align:center;color:var(--mute);font-size:12.5px;margin:22px 0 4px}
+.credit b{color:var(--ink)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px}
 .row{display:flex;align-items:center;gap:10px}
 .grow{flex:1;min-width:0}
@@ -48,11 +61,38 @@ td.nr{font-weight:800;color:var(--ink);min-width:44px;background:var(--mist)}
 .stat div{flex:1;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center}
 .stat b{display:block;font-size:22px;color:var(--ink)}
 .stat span{font-size:12px;color:var(--mute)}
+.bar{height:9px;border-radius:6px;background:var(--line);overflow:hidden;margin:8px 0 4px}
+.bar i{display:block;height:100%;border-radius:6px}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px}
+.g{background:#DDF4EA;color:#15734E}.y{background:#FDEFD3;color:#8A5A07}.r{background:#FADDE0;color:#A62B36}.z{background:#E8EDF2;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{font-size:12px;font-weight:700;padding:4px 9px;border-radius:9px}
+.desc{font-size:13px;color:var(--text);background:var(--paper);border-radius:10px;padding:9px 11px}
+.seg{display:flex;background:var(--mist);border-radius:12px;padding:4px;margin-bottom:14px}
+.seg button{flex:1;border:0;background:none;padding:9px;border-radius:9px;font:600 14px system-ui;color:var(--mute)}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.arow{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--line)}
+.arow span{flex:1;font-size:14px}
+.lvs{display:flex;gap:5px}
+.lv{min-width:40px;border:1.5px solid var(--line);background:#fff;color:var(--mute);border-radius:9px;padding:7px 0;font:700 12px system-ui}
+.lv.on{color:#fff;border-color:transparent}.lv.l4{background:var(--ok)}.lv.l3{background:var(--ink2)}.lv.l2{background:var(--amber)}.lv.l1{background:var(--bad)}
+.lv:not(.on){background:#fff;color:var(--mute)}
+.b{background:#DCEBF8;color:#1F4E80}
+#splash{position:fixed;inset:0;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:24px;background:radial-gradient(circle at 80% 15%,rgba(143,211,244,.4),transparent 45%),linear-gradient(165deg,var(--deep),var(--ink2));transition:opacity .6s,visibility .6s}
+#splash.out{opacity:0;visibility:hidden}
+#splash svg{width:96px;height:96px;border-radius:26px;box-shadow:0 14px 40px rgba(0,0,0,.4);animation:pop .8s cubic-bezier(.2,1.4,.4,1) both}
+#splash h1{margin:22px 0 8px;font-size:46px;font-weight:900;letter-spacing:9px;padding-left:9px;animation:rise .7s .35s both}
+#splash p{margin:0;color:var(--sky);font-size:16px;max-width:280px;animation:rise .7s .6s both}
+#splash small{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 28px);color:rgba(255,255,255,.7);font-size:13px;animation:rise .7s .9s both}
+@keyframes pop{from{transform:scale(.4) rotate(-12deg);opacity:0}}
+@keyframes rise{from{transform:translateY(16px);opacity:0}}
+@media (prefers-reduced-motion:reduce){#splash *{animation:none!important}}
 </style>
 </head>
 <body>
+<div id="splash"></div>
 <div id="app">
-  <header><h1>Nilai Siswa</h1><p id="hsub"></p></header>
+  <header id="hd"></header>
   <main id="main"></main>
   <nav id="nav"></nav>
 </div>
@@ -60,9 +100,11 @@ td.nr{font-weight:800;color:var(--ink);min-width:44px;background:var(--mist)}
 <script src="xlsx.full.min.js"></script>
 <script>
 /* ===== Data ===== */
+const TAG='Siap Menilai kapan saja dan Di mana saja',CREDIT='Dikembangkan oleh Niko EA, M.Pd',NF=6;
 let db;
 try{db=JSON.parse(localStorage.getItem('nilai_db'))}catch(e){}
 db=db||{kelas:[],siswa:[],mapel:[],nilai:{},aktif:null,tab:'kelas',mapelAktif:null};
+db.sikap=db.sikap||{};
 const save=()=>{try{localStorage.setItem('nilai_db',JSON.stringify(db))}catch(e){toast('Gagal menyimpan data')}};
 const uid=()=>Math.random().toString(36).slice(2,9);
 const $=s=>document.querySelector(s);
@@ -72,13 +114,44 @@ const siswaKelas=()=>db.siswa.filter(s=>s.kelasId===db.aktif).sort((a,b)=>a.nama
 const mapelKelas=()=>db.mapel.filter(m=>m.kelasId===db.aktif);
 const getN=(m,s)=>db.nilai[m+'|'+s]||{f:[],t:[]};
 const num=v=>(v===''||v==null||isNaN(v))?null:+v;
-/* Opsi Rata-rata: NR = rata-rata semua nilai sumatif (TP1-TP4, STS, SAS) yang terisi.
-   Formatif tidak masuk NR. Ubah fungsi ini jika rumus sekolah berbeda. */
+const tpName=(m,i)=>(m.tp[i]||'').trim()||'TP'+(i+1);
+const LV={4:['SB','Sangat Baik','g'],3:['B','Baik','b'],2:['C','Cukup','y'],1:['PB','Perlu Bimbingan','r']};
+const DEF_ASPEK=['Religius','Disiplin','Jujur','Tanggung jawab','Gotong royong','Santun'];
+function aspekKelas(kid){const k=db.kelas.find(x=>x.id===kid);if(!k.aspek){k.aspek=DEF_ASPEK.map(n=>({id:uid(),nama:n}));save()}return k.aspek}
+const getS=sid=>db.sikap[sid]||{};
+function sikapInfo(kid,sid){
+  const as=aspekKelas(kid),d=getS(sid),g={4:[],3:[],2:[],1:[]};let tot=0,n=0;
+  as.forEach(a=>{const v=d[a.id];if(v){g[v].push(a.nama);tot+=v;n++}});
+  const avg=n?tot/n:null,p=avg===null?null:avg>=3.5?4:avg>=2.5?3:avg>=1.5?2:1,parts=[];
+  [4,3,2,1].forEach(l=>g[l].length&&parts.push(LV[l][1]+': '+g[l].join(', ')));
+  let desk=parts.join('. ');if(d.cat)desk+=(desk?'. ':'')+d.cat;
+  return{p,desk:desk||'Belum dinilai.'};
+}
+const LOGO=`<svg viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="#8FD3F4"/><rect x="10" y="26" width="6" height="12" rx="2" fill="#12355B"/><rect x="21" y="19" width="6" height="19" rx="2" fill="#12355B"/><rect x="32" y="11" width="6" height="27" rx="2" fill="#12355B"/><path d="M9 18l8-6 6 4 9-8" stroke="#F2A93B" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+/* Opsi Rata-rata: NR = rata-rata semua nilai sumatif (semua TP, STS, SAS) yang terisi. Formatif tidak masuk NR. */
 function hitungNR(n){
   const a=[...(n.t||[]),n.sts,n.sas].map(num).filter(x=>x!==null);
   return a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):'';
 }
 function toast(t){const e=document.createElement('div');e.className='toast';e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),2200)}
+
+/* ===== Analisis capaian ===== */
+function analisis(m){
+  const sl=siswaKelas(),K=m.kktp||75;
+  return m.tp.map((_,i)=>{
+    const v=sl.map(s=>num(getN(m.id,s.id).t[i])).filter(x=>x!==null);
+    const avg=v.length?Math.round(v.reduce((a,b)=>a+b,0)/v.length*10)/10:null;
+    const p=v.length?Math.round(v.filter(x=>x>=K).length/v.length*100):null;
+    const kat=p===null?'Belum ada nilai':p>=75?'Tercapai':p>=50?'Cukup':'Perlu penguatan';
+    return{i,avg,n:v.length,p,kat,c:p===null?'z':p>=75?'g':p>=50?'y':'r'};
+  });
+}
+function deskripsi(m,s){
+  const K=m.kktp||75,n=getN(m.id,s.id),ok=[],no=[];
+  m.tp.forEach((_,i)=>{const v=num(n.t[i]);if(v===null)return;(v>=K?ok:no).push(tpName(m,i))});
+  let d='';if(ok.length)d+='Sudah mencapai: '+ok.join('; ')+'. ';if(no.length)d+='Perlu bimbingan pada: '+no.join('; ')+'.';
+  return d.trim()||'Belum ada nilai sumatif TP.';
+}
 
 /* ===== Dialog input ===== */
 function ask(title,fields,ok){
@@ -99,61 +172,105 @@ function ask(title,fields,ok){
 
 /* ===== Tampilan ===== */
 const ICON={
-  kelas:'<path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/>',
-  siswa:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.5 3.3-5.5 6.5-5.5s5.9 2 6.5 5.5M17 5a3.5 3.5 0 0 1 0 6.5M21.5 20c-.4-2.4-1.700-4-3.500-4.800"/>',
-  mapel:'<path d="M4 4.500A2.500 2.500 0 0 1 6.500 2H20v17H6.500A2.500 2.500 0 0 0 4 21.500zM4 21.500A2.500 2.500 0 0 0 6.500 24H20"/>',
+  kelas:'<path d="M3 11l9-8 9 8M5 9.5V21h14V9.5M10 21v-6h4v6"/>',
+  siswa:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.5 3.3-5.5 6.5-5.5s5.9 2 6.5 5.5M17 5a3.5 3.5 0 0 1 0 6.5M21.5 20c-.4-2.4-1.7-4-3.5-4.8"/>',
+  mapel:'<path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5zM4 21.5A2.5 2.5 0 0 0 6.5 24H20"/>',
   nilai:'<path d="M4 20h16M7 20V10m5 10V4m5 16v-7"/>',
+  sikap:'<path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/>',
+  analisis:'<path d="M3 17l6-6 4 4 8-8M15 7h6v6"/>',
   ekspor:'<path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v3h16v-3"/>'
 };
-const TABS=[['kelas','Kelas'],['siswa','Siswa'],['mapel','Mapel & TP'],['nilai','Nilai'],['ekspor','Ekspor']];
-function render(){
-  $('#nav').innerHTML=TABS.map(([k,l])=>`<button class="${db.tab===k?'on':''}" data-tab="${k}"><svg viewBox="0 0 24 24">${ICON[k==='mapel'?'mapel':k]}</svg>${l}</button>`).join('');
+const TABS=[['kelas','Beranda'],['siswa','Siswa'],['mapel','Mapel'],['nilai','Nilai'],['sikap','Sikap'],['analisis','Analisis'],['ekspor','Ekspor']];
+function render(){const st=$('#main').scrollTop;
+  $('#nav').innerHTML=TABS.map(([k,l])=>`<button class="${db.tab===k?'on':''}" data-tab="${k}"><svg viewBox="0 0 24 24">${ICON[k]}</svg>${l}</button>`).join('');
   const k=kelasAktif();
-  $('#hsub').textContent=k?`Kelas aktif: ${k.nama}`:'Buat kelas untuk memulai';
-  const needClass=db.tab!=='kelas'&&db.tab!=='ekspor'&&!k;
-  $('#main').innerHTML=needClass?`<div class="empty">Belum ada kelas aktif.<br>Buat atau pilih kelas di tab Kelas.</div>`:VIEW[db.tab]();
+  $('#hd').style.display=db.tab==='kelas'?'none':'flex';
+  $('#hd').innerHTML=`${LOGO}<div><b>EVALO</b><span>${k?'Kelas aktif: '+esc(k.nama):'Belum ada kelas aktif'}</span></div>`;
+  const needClass=!['kelas','ekspor'].includes(db.tab)&&!k;
+  $('#main').innerHTML=needClass?`<div class="empty">Belum ada kelas aktif.<br>Buat atau pilih kelas di tab Beranda.</div>`:VIEW[db.tab]();
+  $('#main').scrollTop=st;
 }
 const VIEW={
 kelas(){
-  const st=`<div class="stat"><div><b>${db.kelas.length}</b><span>Kelas</span></div><div><b>${db.siswa.length}</b><span>Siswa</span></div><div><b>${db.mapel.length}</b><span>Mapel</span></div></div>`;
   const list=db.kelas.map(k=>`<div class="card row ${k.id===db.aktif?'sel':''}" data-pilih="${k.id}">
-    <div class="grow"><div class="title">${esc(k.nama)}</div><div class="sub">${db.siswa.filter(s=>s.kelasId===k.id).length} siswa · ${db.mapel.filter(m=>m.kelasId===k.id).length} mapel</div></div>
-    <button class="btn ghost sm" data-edit-kelas="${k.id}">Ubah</button><button class="btn ghost sm" data-del-kelas="${k.id}">Hapus</button></div>`).join('');
-  return `${st}<div class="btns"><button class="btn" data-add-kelas>+ Tambah kelas</button></div>${list||'<div class="empty">Belum ada kelas.<br>Contoh: VII A, 5B</div>'}`;
+    <div class="grow"><div class="title">${esc(k.nama)}</div><div class="sub">${db.siswa.filter(s=>s.kelasId===k.id).length} siswa, ${db.mapel.filter(m=>m.kelasId===k.id).length} mapel</div></div>
+    <button class="btn ghost sm" data-edit-kelas="${k.id}" style="color:var(--ink2)">Ubah</button><button class="btn ghost sm" data-del-kelas="${k.id}">Hapus</button></div>`).join('');
+  const bars=[34,52,44,70,60].map(h=>`<i style="height:${h}px"></i>`).join('');
+  return `<div class="hero"><div class="bars">${bars}</div><div class="lg">${LOGO.replace('<svg','<svg class="lg"')}</div><h1>EVALO</h1><p>${TAG}</p>
+  <div class="hstat"><div><b>${db.kelas.length}</b><span>Kelas</span></div><div><b>${db.siswa.length}</b><span>Siswa</span></div><div><b>${db.mapel.length}</b><span>Mapel</span></div></div></div>
+  <h2>Kelas saya</h2><div class="btns"><button class="btn" data-add-kelas>+ Tambah kelas</button></div>
+  ${list||'<div class="empty">Belum ada kelas.<br>Mulai dengan menambah kelas, misalnya VII A atau 5B.</div>'}
+  <div class="credit">${CREDIT.replace('Niko EA, M.Pd','<b>Niko EA, M.Pd</b>')}</div>`;
 },
 siswa(){
   const l=siswaKelas();
   return `<h2>Siswa ${esc(kelasAktif().nama)}</h2><div class="btns"><button class="btn" data-add-siswa>+ Tambah siswa</button><button class="btn alt" data-upload>Upload template</button><button class="btn alt" data-template>Unduh template</button></div>
-  ${l.map((s,i)=>`<div class="card row"><div class="sub" style="width:24px">${i+1}</div><div class="grow title">${esc(s.nama)}</div><button class="btn ghost sm" data-edit-siswa="${s.id}">Ubah</button><button class="btn ghost sm" data-del-siswa="${s.id}">Hapus</button></div>`).join('')||'<div class="empty">Belum ada siswa.<br>Tambah manual atau upload file Excel (kolom “Nama Siswa”).</div>'}`;
+  ${l.map((s,i)=>`<div class="card row"><div class="sub" style="width:24px">${i+1}</div><div class="grow title">${esc(s.nama)}</div><button class="btn ghost sm" data-edit-siswa="${s.id}" style="color:var(--ink2)">Ubah</button><button class="btn ghost sm" data-del-siswa="${s.id}">Hapus</button></div>`).join('')||'<div class="empty">Belum ada siswa.<br>Tambah manual atau upload file Excel (kolom “Nama Siswa”).</div>'}`;
 },
 mapel(){
   const l=mapelKelas();
   return `<h2>Mata pelajaran & TP</h2><div class="btns"><button class="btn" data-add-mapel>+ Tambah mapel</button></div>
   ${l.map(m=>`<div class="card"><div class="row"><div class="grow title">${esc(m.nama)}</div><button class="btn ghost sm" data-del-mapel="${m.id}">Hapus</button></div>
-  ${[0,1,2,3].map(i=>`<div class="row" style="margin-top:8px"><b style="width:36px;color:var(--ink2)">TP${i+1}</b><input data-tp="${m.id}|${i}" value="${esc(m.tp[i]||'')}" placeholder="Tujuan pembelajaran ${i+1}"></div>`).join('')}</div>`).join('')||'<div class="empty">Belum ada mata pelajaran.</div>'}`;
+  ${m.tp.map((t,i)=>`<div class="row" style="margin-top:8px"><b style="min-width:36px;color:var(--ink2)">TP${i+1}</b><input data-tp="${m.id}|${i}" value="${esc(t)}" placeholder="Tujuan pembelajaran ${i+1}"><button class="btn ghost sm" data-del-tp="${m.id}|${i}">✕</button></div>`).join('')}
+  <button class="btn alt sm" style="margin-top:12px" data-add-tp="${m.id}">+ Tambah TP</button></div>`).join('')||'<div class="empty">Belum ada mata pelajaran.</div>'}`;
 },
 nilai(){
   const ml=mapelKelas();
-  if(!ml.length)return `<div class="empty">Buat mata pelajaran dulu di tab Mapel & TP.</div>`;
-  if(!ml.find(m=>m.id===db.mapelAktif))db.mapelAktif=ml[0].id;
-  const m=ml.find(x=>x.id===db.mapelAktif),sl=siswaKelas();
-  const head=`<select data-pilih-mapel style="margin-bottom:12px">${ml.map(x=>`<option value="${x.id}" ${x.id===m.id?'selected':''}>${esc(x.nama)}</option>`).join('')}</select>`;
+  if(!ml.length)return `<div class="empty">Buat mata pelajaran dulu di tab Mapel.</div>`;
+  const m=pilihMapel(ml),sl=siswaKelas();
+  const head=mapelSelect(ml,m);
   if(!sl.length)return head+`<div class="empty">Belum ada siswa di kelas ini.</div>`;
+  const T=m.tp.length,idx=n=>Array.from({length:n},(_,i)=>i);
   const cell=(sid,k,v)=>`<td><input type="number" inputmode="numeric" min="0" max="100" data-n="${sid}|${k}" value="${v??''}"></td>`;
-  const rows=sl.map(s=>{const n=getN(m.id,s.id);return `<tr><td class="n">${esc(s.nama)}</td>${[0,1,2,3,4].map(i=>cell(s.id,'f'+i,n.f[i])).join('')}${[0,1,2,3].map(i=>cell(s.id,'t'+i,n.t[i])).join('')}${cell(s.id,'sts',n.sts)}${cell(s.id,'sas',n.sas)}<td class="nr" id="nr-${s.id}">${hitungNR(n)}</td></tr>`}).join('');
-  return `${head}<div class="tw"><table><thead><tr><th class="n" rowspan="2">Nama siswa</th><th colspan="5">Formatif</th><th colspan="4">Sumatif</th><th rowspan="2">STS</th><th rowspan="2">SAS</th><th rowspan="2">NR</th></tr><tr>${[1,2,3,4,5].map(i=>`<th>${i}</th>`).join('')}${[1,2,3,4].map(i=>`<th>TP${i}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>
-  <p class="sub">NR = rata-rata nilai sumatif (TP, STS, SAS). Nilai tersimpan otomatis.</p>`;
+  const rows=sl.map(s=>{const n=getN(m.id,s.id);return `<tr><td class="n">${esc(s.nama)}</td>${idx(NF).map(i=>cell(s.id,'f'+i,n.f[i])).join('')}${idx(T).map(i=>cell(s.id,'t'+i,n.t[i])).join('')}${cell(s.id,'sts',n.sts)}${cell(s.id,'sas',n.sas)}<td class="nr" id="nr-${s.id}">${hitungNR(n)}</td></tr>`}).join('');
+  return `${head}<div class="tw"><table><thead><tr><th class="n" rowspan="2">Nama siswa</th><th colspan="${NF}">Formatif</th>${T?`<th colspan="${T}">Sumatif</th>`:''}<th rowspan="2">STS</th><th rowspan="2">SAS</th><th rowspan="2">NR</th></tr><tr>${idx(NF).map(i=>`<th>${i+1}</th>`).join('')}${idx(T).map(i=>`<th>TP${i+1}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>
+  <p class="sub">NR = rata-rata nilai sumatif (semua TP, STS, SAS). Nilai tersimpan otomatis.</p>`;
+},
+sikap(){
+  const k=kelasAktif(),as=aspekKelas(k.id),sl=siswaKelas(),mode=db.sikapMode==='aspek'?'aspek':'nilai';
+  const seg=`<div class="seg"><button class="${mode==='nilai'?'on':''}" data-sikap-mode="nilai">Penilaian</button><button class="${mode==='aspek'?'on':''}" data-sikap-mode="aspek">Aspek sikap</button></div>`;
+  if(mode==='aspek')return seg+`<div class="card"><div class="title">Aspek sikap kelas ${esc(k.nama)}</div><p class="sub">Tambah, ubah, atau hapus aspek sesuai kebutuhan Anda.</p>
+  ${as.map(a=>`<div class="row" style="margin-top:8px"><input data-aspek="${a.id}" value="${esc(a.nama)}" placeholder="Nama aspek"><button class="btn ghost sm" data-del-aspek="${a.id}">✕</button></div>`).join('')}
+  <button class="btn alt sm" style="margin-top:12px" data-add-aspek>+ Tambah aspek</button></div>`;
+  if(!as.length)return seg+`<div class="empty">Belum ada aspek sikap.<br>Tambahkan di tab “Aspek sikap”.</div>`;
+  if(!sl.length)return seg+`<div class="empty">Belum ada siswa di kelas ini.</div>`;
+  const leg=[4,3,2,1].map(l=>`<span class="pill ${LV[l][2]}">${LV[l][0]} = ${LV[l][1]}</span>`).join(' ');
+  return `${seg}<div class="chips">${leg}</div><div class="btns"><button class="btn alt sm" data-isi-baik>Isi yang kosong dengan Baik</button></div>
+  ${sl.map(s=>{const d=getS(s.id),f=sikapInfo(k.id,s.id);return `<div class="card"><div class="row"><div class="grow title">${esc(s.nama)}</div><span class="pill ${f.p?LV[f.p][2]:'z'}" id="sp-${s.id}">${f.p?LV[f.p][1]:'Belum dinilai'}</span></div>
+  ${as.map(a=>`<div class="arow"><span>${esc(a.nama)}</span><div class="lvs">${[4,3,2,1].map(l=>`<button class="lv ${d[a.id]===l?'on l'+l:''}" data-lv="${s.id}|${a.id}|${l}">${LV[l][0]}</button>`).join('')}</div></div>`).join('')}
+  <input data-cat="${s.id}" value="${esc(d.cat||'')}" placeholder="Catatan guru (opsional)" style="margin:10px 0 8px"><div class="desc" id="sd-${s.id}">${esc(f.desk)}</div></div>`}).join('')}`;
+},
+analisis(){
+  const ml=mapelKelas();
+  if(!ml.length)return `<div class="empty">Buat mata pelajaran dan TP dulu di tab Mapel.</div>`;
+  const m=pilihMapel(ml),sl=siswaKelas(),K=m.kktp||75;
+  if(!sl.length||!m.tp.length)return mapelSelect(ml,m)+`<div class="empty">Analisis butuh minimal 1 siswa dan 1 TP.</div>`;
+  const an=analisis(m),nrs=sl.map(s=>hitungNR(getN(m.id,s.id))).filter(x=>x!=='');
+  const rata=nrs.length?Math.round(nrs.reduce((a,b)=>a+b,0)/nrs.length):'-',tuntas=nrs.filter(x=>x>=K).length;
+  const col={g:'var(--ok)',y:'var(--amber)',r:'var(--bad)',z:'var(--line)'};
+  return `${mapelSelect(ml,m)}
+  <div class="card row"><div class="grow"><div class="title">Batas ketercapaian (KKTP)</div><div class="sub">Nilai minimal TP dianggap tercapai</div></div><input type="number" min="0" max="100" data-kktp value="${K}" style="width:80px;text-align:center"></div>
+  <div class="stat"><div><b>${rata}</b><span>Rata-rata NR</span></div><div><b>${tuntas}/${nrs.length}</b><span>NR ≥ ${K}</span></div></div>
+  <h2>Capaian per TP</h2>
+  ${an.map(a=>`<div class="card"><div class="row"><div class="grow"><div class="title">TP${a.i+1}</div><div class="sub">${esc(m.tp[a.i]||'(belum diisi)')}</div></div><span class="pill ${a.c}">${a.kat}</span></div>
+  <div class="bar"><i style="width:${a.p||0}%;background:${col[a.c]}"></i></div><div class="sub">${a.p===null?'Belum ada nilai':`${a.p}% siswa mencapai, rata-rata ${a.avg}, ${a.n} siswa dinilai`}</div></div>`).join('')}
+  <h2 style="margin-top:18px">Capaian per siswa</h2>
+  ${sl.map(s=>{const n=getN(m.id,s.id);return `<div class="card"><div class="row"><div class="grow title">${esc(s.nama)}</div><span class="pill z">NR ${hitungNR(n)||'-'}</span></div>
+  <div class="chips">${m.tp.map((_,i)=>{const v=num(n.t[i]);return `<span class="chip ${v===null?'z':v>=K?'g':'r'}">TP${i+1}: ${v===null?'-':v}</span>`}).join('')}</div><div class="desc">${esc(deskripsi(m,s))}</div></div>`}).join('')}`;
 },
 ekspor(){
-  return `<h2>Ekspor ke Excel</h2><div class="card"><div class="title">Rekap nilai raport</div><p class="sub">Satu sheet per mata pelajaran, format mengikuti contoh rekap nilai raport (Formatif 1–5, Sumatif TP1–TP4, STS, SAS, NR).</p>
+  return `<h2>Ekspor ke Excel</h2><div class="card"><div class="title">Rekap nilai raport</div><p class="sub">Satu sheet per mata pelajaran: Formatif 1–6, Sumatif semua TP, STS, SAS, NR, deskripsi capaian, analisis ketercapaian TP, dan penilaian sikap.</p>
   <div class="btns" style="margin:0"><button class="btn" data-export="all">Semua kelas</button>${kelasAktif()?`<button class="btn alt" data-export="aktif">Kelas ${esc(kelasAktif().nama)}</button>`:''}</div></div>
-  <div class="card"><div class="title">Cadangan data</div><p class="sub">Data tersimpan di HP ini. Hapus data aplikasi akan menghapus semuanya, jadi ekspor secara berkala.</p></div>`;
+  <div class="card"><div class="title">Cadangan data</div><p class="sub">Data tersimpan di HP ini. Menghapus data aplikasi akan menghapus semuanya, jadi ekspor secara berkala.</p></div>
+  <div class="credit"><b>EVALO</b><br>${TAG}<br>${CREDIT}</div>`;
 }};
+function pilihMapel(ml){if(!ml.find(m=>m.id===db.mapelAktif))db.mapelAktif=ml[0].id;return ml.find(m=>m.id===db.mapelAktif)}
+const mapelSelect=(ml,m)=>`<select data-pilih-mapel style="margin-bottom:12px">${ml.map(x=>`<option value="${x.id}" ${x.id===m.id?'selected':''}>${esc(x.nama)}</option>`).join('')}</select>`;
 
 /* ===== Aksi ===== */
 document.addEventListener('click',e=>{
   const t=e.target.closest('button,[data-pilih]');if(!t)return;const d=t.dataset;
-  if(d.tab){db.tab=d.tab;save();render();return}
+  if(d.tab){db.tab=d.tab;save();render();$('#main').scrollTop=0;return}
   if(d.addKelas!==undefined)return ask('Kelas baru',[{label:'Nama kelas',ph:'VII A'}],([n])=>{const k={id:uid(),nama:n};db.kelas.push(k);db.aktif=k.id;save();render()});
   if(d.editKelas){const k=db.kelas.find(x=>x.id===d.editKelas);return ask('Ubah kelas',[{label:'Nama kelas',value:k.nama}],([n])=>{k.nama=n;save();render()})}
   if(d.delKelas){if(confirm('Hapus kelas beserta siswa, mapel, dan nilainya?')){const id=d.delKelas;
@@ -163,25 +280,36 @@ document.addEventListener('click',e=>{
   if(d.pilih){db.aktif=d.pilih;save();render();return}
   if(d.addSiswa!==undefined)return ask('Siswa baru',[{label:'Nama siswa'}],([n])=>{db.siswa.push({id:uid(),kelasId:db.aktif,nama:n});save();render()});
   if(d.editSiswa){const s=db.siswa.find(x=>x.id===d.editSiswa);return ask('Ubah siswa',[{label:'Nama siswa',value:s.nama}],([n])=>{s.nama=n;save();render()})}
-  if(d.delSiswa){if(confirm('Hapus siswa ini beserta nilainya?')){const id=d.delSiswa;Object.keys(db.nilai).forEach(k=>k.endsWith('|'+id)&&delete db.nilai[k]);db.siswa=db.siswa.filter(s=>s.id!==id);save();render()}return}
+  if(d.delSiswa){if(confirm('Hapus siswa ini beserta nilainya?')){const id=d.delSiswa;Object.keys(db.nilai).forEach(k=>k.endsWith('|'+id)&&delete db.nilai[k]);delete db.sikap[id];db.siswa=db.siswa.filter(s=>s.id!==id);save();render()}return}
   if(d.upload!==undefined)return $('#file').click();
   if(d.template!==undefined){const ws=XLSX.utils.aoa_to_sheet([['No','Nama Siswa'],[1,'Contoh Nama Siswa 1'],[2,'Contoh Nama Siswa 2']]);ws['!cols']=[{wch:6},{wch:36}];const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Siswa');return berkas('template-siswa.xlsx',XLSX.write(wb,{type:'base64',bookType:'xlsx'}))}
-  if(d.addMapel!==undefined)return ask('Mata pelajaran baru',[{label:'Nama mata pelajaran',ph:'Matematika'}],([n])=>{db.mapel.push({id:uid(),kelasId:db.aktif,nama:n,tp:['','','','']});save();render()});
+  if(d.addMapel!==undefined)return ask('Mata pelajaran baru',[{label:'Nama mata pelajaran',ph:'Matematika'}],([n])=>{db.mapel.push({id:uid(),kelasId:db.aktif,nama:n,tp:[''],kktp:75});save();render()});
   if(d.delMapel){if(confirm('Hapus mata pelajaran beserta nilainya?')){const id=d.delMapel;Object.keys(db.nilai).forEach(k=>k.startsWith(id+'|')&&delete db.nilai[k]);db.mapel=db.mapel.filter(m=>m.id!==id);save();render()}return}
+  if(d.addTp){db.mapel.find(m=>m.id===d.addTp).tp.push('');save();render();return}
+  if(d.delTp){const[id,i]=d.delTp.split('|'),m=db.mapel.find(x=>x.id===id);
+    if(confirm(`Hapus TP${+i+1}? Nilai TP ini ikut terhapus.`)){m.tp.splice(+i,1);Object.keys(db.nilai).forEach(k=>k.startsWith(id+'|')&&db.nilai[k].t&&db.nilai[k].t.splice(+i,1));save();render()}return}
+  if(d.sikapMode){db.sikapMode=d.sikapMode;save();render();return}
+  if(d.addAspek!==undefined){aspekKelas(db.aktif).push({id:uid(),nama:''});save();render();return}
+  if(d.delAspek){if(confirm('Hapus aspek ini beserta nilainya?')){const as=aspekKelas(db.aktif),i=as.findIndex(a=>a.id===d.delAspek);as.splice(i,1);Object.values(db.sikap).forEach(v=>delete v[d.delAspek]);save();render()}return}
+  if(d.lv){const[sid,aid,l]=d.lv.split('|'),o=db.sikap[sid]=db.sikap[sid]||{};if(o[aid]===+l)delete o[aid];else o[aid]=+l;save();render();return}
+  if(d.isiBaik!==undefined){const as=aspekKelas(db.aktif);siswaKelas().forEach(s=>{const o=db.sikap[s.id]=db.sikap[s.id]||{};as.forEach(a=>{if(!o[a.id])o[a.id]=3})});save();render();toast('Aspek kosong diisi Baik');return}
   if(d.export)return ekspor(d.export==='all');
 });
 document.addEventListener('change',e=>{
   const d=e.target.dataset;
   if(d.pilihMapel!==undefined){db.mapelAktif=e.target.value;save();render()}
+  if(d.kktp!==undefined){const m=db.mapel.find(x=>x.id===db.mapelAktif);m.kktp=Math.min(100,Math.max(0,+e.target.value||75));save();render()}
 });
 document.addEventListener('input',e=>{
   const d=e.target.dataset;
   if(d.tp){const[id,i]=d.tp.split('|');db.mapel.find(m=>m.id===id).tp[+i]=e.target.value;save()}
+  if(d.aspek){const a=aspekKelas(db.aktif).find(x=>x.id===d.aspek);a.nama=e.target.value;save()}
+  if(d.cat!==undefined){const o=db.sikap[d.cat]=db.sikap[d.cat]||{};o.cat=e.target.value.trim();save();const el=$('#sd-'+d.cat);if(el)el.textContent=sikapInfo(db.aktif,d.cat).desk}
   if(d.n){
     const[sid,k]=d.n.split('|');let v=e.target.value;
     if(v!==''&&+v>100){v='100';e.target.value=v}
     const key=db.mapelAktif+'|'+sid;const n=db.nilai[key]=db.nilai[key]||{f:[],t:[]};
-    if(k[0]==='f')n.f[+k[1]]=v;else if(k[0]==='t')n.t[+k[1]]=v;else n[k]=v;
+    if(k[0]==='f')n.f[+k.slice(1)]=v;else if(k[0]==='t')n.t[+k.slice(1)]=v;else n[k]=v;
     save();const c=$('#nr-'+sid);if(c)c.textContent=hitungNR(n);
   }
 });
@@ -203,25 +331,39 @@ $('#file').addEventListener('change',async e=>{
 async function ekspor(semua){
   const ks=semua?db.kelas:db.kelas.filter(k=>k.id===db.aktif);
   const ms=db.mapel.filter(m=>ks.some(k=>k.id===m.kelasId));
-  if(!ms.length)return toast('Belum ada mata pelajaran untuk diekspor');
-  const wb=XLSX.utils.book_new(),used=new Set();
+  if(!ms.length&&!ks.some(k=>db.siswa.some(x=>x.kelasId===k.id)))return toast('Belum ada data untuk diekspor');
+  const wb=XLSX.utils.book_new(),used=new Set(),R=(n,v='')=>Array(n).fill(v);
   ms.forEach(m=>{
     const k=db.kelas.find(x=>x.id===m.kelasId),sl=db.siswa.filter(s=>s.kelasId===k.id).sort((a,b)=>a.nama.localeCompare(b.nama));
-    const aoa=[[`REKAP NILAI RAPORT - ${m.nama}`],[`Kelas: ${k.nama}`],[],
-      ['No','Nama Siswa','FORMATIF','','','','','SUMATIF','','','','STS','SAS','NR'],
-      ['','',1,2,3,4,5,'TP1','TP2','TP3','TP4','','','']];
+    const T=m.tp.length,K=m.kktp||75,cS=2+NF,cSts=cS+T,cNr=cSts+2,cDesc=cNr+1;
+    const h1=['No','Nama Siswa','FORMATIF',...R(NF-1),...(T?['SUMATIF',...R(T-1)]:[]),'STS','SAS','NR','Deskripsi Capaian'];
+    const h2=['','',...Array.from({length:NF},(_,i)=>i+1),...m.tp.map((_,i)=>'TP'+(i+1)),'','','',''];
+    const aoa=[[`REKAP NILAI RAPORT - ${m.nama}`],[`Kelas: ${k.nama}`],[],h1,h2];
     sl.forEach((s,i)=>{const n=getN(m.id,s.id),v=x=>num(x)??'';
-      aoa.push([i+1,s.nama,...[0,1,2,3,4].map(j=>v(n.f[j])),...[0,1,2,3].map(j=>v(n.t[j])),v(n.sts),v(n.sas),hitungNR(n)])});
-    aoa.push([],['Ket:'],['Formatif: asesmen untuk meningkatkan kualitas pembelajaran (tidak dijadikan nilai raport)'],['Sumatif: asesmen yang hasilnya dijadikan nilai raport'],['STS: Sumatif Tengah Semester | SAS: Sumatif Akhir Semester'],['NR: rata-rata nilai sumatif (TP, STS, SAS)']);
+      aoa.push([i+1,s.nama,...Array.from({length:NF},(_,j)=>v(n.f[j])),...m.tp.map((_,j)=>v(n.t[j])),v(n.sts),v(n.sas),hitungNR(n),deskripsi(m,s)])});
+    aoa.push([],['Ket:'],['Formatif: asesmen untuk meningkatkan kualitas pembelajaran (tidak dijadikan nilai raport)'],['Sumatif: asesmen yang hasilnya dijadikan nilai raport'],['STS: Sumatif Tengah Semester | SAS: Sumatif Akhir Semester'],['NR: rata-rata nilai sumatif (semua TP, STS, SAS)']);
     m.tp.forEach((t,i)=>t&&aoa.push([`TP${i+1}: ${t}`]));
-    const ws=XLSX.utils.aoa_to_sheet(aoa);
-    ws['!merges']=[{s:{r:3,c:0},e:{r:4,c:0}},{s:{r:3,c:1},e:{r:4,c:1}},{s:{r:3,c:2},e:{r:3,c:6}},{s:{r:3,c:7},e:{r:3,c:10}},{s:{r:3,c:11},e:{r:4,c:11}},{s:{r:3,c:12},e:{r:4,c:12}},{s:{r:3,c:13},e:{r:4,c:13}}];
-    ws['!cols']=[{wch:5},{wch:32},...Array(12).fill({wch:7})];
+    if(T){aoa.push([],[`ANALISIS KETERCAPAIAN TP (KKTP ${K})`],['TP','Tujuan Pembelajaran','Rata-rata','% Tercapai','Kategori']);
+      const old=db.aktif;db.aktif=k.id;analisis(m).forEach(a=>aoa.push([`TP${a.i+1}`,m.tp[a.i]||'',a.avg??'',a.p===null?'':a.p+'%',a.kat]));db.aktif=old}
+    const ws=XLSX.utils.aoa_to_sheet(aoa),mg=[];
+    const add=(r1,c1,r2,c2)=>{if(r2>r1||c2>c1)mg.push({s:{r:r1,c:c1},e:{r:r2,c:c2}})};
+    [0,1,cSts,cSts+1,cNr,cDesc].forEach(c=>add(3,c,4,c));add(3,2,3,1+NF);if(T)add(3,cS,3,cS+T-1);
+    ws['!merges']=mg;ws['!cols']=[{wch:6},{wch:32},...R(NF+T+3,{wch:8}),{wch:60}];
     let nm=(k.nama+' '+m.nama).replace(/[\\\/\?\*\[\]:]/g,'').slice(0,28),i=1,base=nm;
     while(used.has(nm))nm=base.slice(0,25)+'-'+(++i);used.add(nm);
     XLSX.utils.book_append_sheet(wb,ws,nm);
   });
-  await berkas('rekap-nilai-raport.xlsx',XLSX.write(wb,{type:'base64',bookType:'xlsx'}));
+  ks.forEach(k=>{
+    const sl=db.siswa.filter(x=>x.kelasId===k.id).sort((a,b)=>a.nama.localeCompare(b.nama)),as=aspekKelas(k.id);
+    if(!sl.length||!as.length)return;
+    const aoa=[['PENILAIAN SIKAP'],[`Kelas: ${k.nama}`],[],['No','Nama Siswa',...as.map(a=>a.nama),'Predikat','Deskripsi']];
+    sl.forEach((x,i)=>{const d=getS(x.id),f=sikapInfo(k.id,x.id);aoa.push([i+1,x.nama,...as.map(a=>d[a.id]?LV[d[a.id]][0]:''),f.p?LV[f.p][1]:'',f.p||d.cat?f.desk:''])});
+    aoa.push([],['Ket: SB = Sangat Baik, B = Baik, C = Cukup, PB = Perlu Bimbingan']);
+    const ws=XLSX.utils.aoa_to_sheet(aoa);ws['!cols']=[{wch:6},{wch:32},...as.map(()=>({wch:14})),{wch:16},{wch:70}];
+    let nm=('Sikap '+k.nama).replace(/[\\\/\?\*\[\]:]/g,'').slice(0,28),j=1,b=nm;
+    while(used.has(nm))nm=b.slice(0,25)+'-'+(++j);used.add(nm);XLSX.utils.book_append_sheet(wb,ws,nm);
+  });
+  await berkas('rekap-nilai-raport-evalo.xlsx',XLSX.write(wb,{type:'base64',bookType:'xlsx'}));
 }
 async function berkas(name,b64){
   try{
@@ -235,6 +377,10 @@ async function berkas(name,b64){
     }
   }catch(err){if(!/cancel/i.test(String(err&&err.message)))toast('Gagal menyimpan file')}
 }
+/* ===== Mulai ===== */
+$('#splash').innerHTML=`${LOGO}<h1>EVALO</h1><p>${TAG}</p><small>${CREDIT}</small>`;
+$('#splash').onclick=()=>$('#splash').classList.add('out');
+setTimeout(()=>$('#splash').classList.add('out'),2600);
 render();
 </script>
 </body>
