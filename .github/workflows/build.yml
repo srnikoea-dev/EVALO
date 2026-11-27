@@ -13,8 +13,11 @@ jobs:
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 17 }
       - run: npm install
-      - name: Salin library Excel (agar jalan offline)
-        run: cp node_modules/xlsx/dist/xlsx.full.min.js www/
+      - name: Salin library Excel dan PDF (agar jalan offline)
+        run: |
+          cp node_modules/xlsx/dist/xlsx.full.min.js www/
+          cp node_modules/jspdf/dist/jspdf.umd.min.js www/
+          cp node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js www/
       - run: npx cap add android
       - run: npx cap sync android
       - name: Build APK
