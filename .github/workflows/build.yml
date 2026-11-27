@@ -19,6 +19,8 @@ jobs:
           cp node_modules/jspdf/dist/jspdf.umd.min.js www/
           cp node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js www/
       - run: npx cap add android
+      - name: Set nama aplikasi menjadi EVALO
+        run: sed -i 's|<string name="app_name">.*</string>|<string name="app_name">EVALO</string>|; s|<string name="title_activity_main">.*</string>|<string name="title_activity_main">EVALO</string>|' android/app/src/main/res/values/strings.xml
       - run: npx cap sync android
       - name: Build APK
         run: cd android && chmod +x gradlew && ./gradlew assembleDebug
